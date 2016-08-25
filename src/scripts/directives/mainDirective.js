@@ -7,3 +7,10 @@ directives.directive('error', function() {
     templateUrl: '../../views/error400.html'
   }
 });
+
+directives.directive('pokemonDirective', function() {
+  return {
+    templateUrl: '../../views/pokemon.html',
+    controller: findPokemonCtrl
+  }
+});

@@ -13,7 +13,17 @@
     <div ng-controller="findPokemonCtrl">
       <input type="text" placeholder="Enter a pokemon name..." ng-model="pokemonName"/>
       <h3 ng-click="getPokemon()" id="searchBtn">Go!</h3>
+      <h4>{{ error }}</h4>
+      <h2>{{ pokemon.name }}</h2>
+      <div ng-init="changeImg=false" ng-mouseover="changeImg=true" ng-mouseleave="changeImg=false">
+        <img ng-hide="changeImg" ng-src="{{pokemon.sprites.front_default}}" />
+        <img ng-show="changeImg" ng-src="{{pokemon.sprites.back_default}}" />
+      </div>
+      <ul ng-repeat="type in types">
+        <li>{{type.type.name}}</li>
+      </ul>
     </div>
+
 
   <script src="./browserify/libs/vendor.bundle.js"></script>
   <script src="./browserify/app.bundle.js"></script>

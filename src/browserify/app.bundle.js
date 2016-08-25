@@ -16,14 +16,13 @@ var controllers = angular.module('pokemon.controllers', []);
 controllers.controller('findPokemonCtrl', function($scope, pokemonFactory) {
 
   var successResponse = function(response) {
-    console.log(response);
+    console.log(response.data);
+    $scope.pokemon = response.data;
+    $scope.types = response.data.types;
   };
 
   var errorResponse = function(response) {
-    if(response.status === 400) {
-      printBadRequestMsg()
-    }
-
+    $scope.error = response.statusText;
   };
 
   $scope.getPokemon = function() {
@@ -39,6 +38,13 @@ var directives = angular.module('pokemon.directives', []);
 directives.directive('error', function() {
   return {
     templateUrl: '../../views/error400.html'
+  }
+});
+
+directives.directive('pokemonDirective', function() {
+  return {
+    templateUrl: '../../views/pokemon.html',
+    controller: findPokemonCtrl
   }
 });
 
